@@ -35,6 +35,7 @@ export default function Index() {
           </div>
           <div className="hidden md:flex gap-8 items-center">
             <a href="#hero" className="hover:text-primary transition-colors">Главная</a>
+            <a href="#catalog" className="hover:text-primary transition-colors">Самостоятельный подбор</a>
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
             <a href="#about" className="hover:text-primary transition-colors">О компании</a>
             <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
@@ -88,7 +89,120 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="services" className="py-20 px-4 bg-white">
+      <section id="catalog" className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Самостоятельный подбор</h2>
+          <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+            Выберите готовые объекты из нашего каталога
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/878aa794-15f4-4027-844b-bb15e7767af9.jpg',
+                title: '3-комнатная квартира в ЖК "Премиум"',
+                price: '15 500 000 ₽',
+                area: '85 м²',
+                rooms: '3 комнаты',
+                floor: '12/25 этаж',
+                address: 'Москва, ул. Тверская, 10',
+                description: 'Современная квартира с панорамными окнами и видом на город. Полностью готова к заселению.'
+              },
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/f4eca84f-b07f-4c94-adfc-e6c96fcc0dab.jpg',
+                title: 'Загородный дом с участком',
+                price: '28 000 000 ₽',
+                area: '250 м²',
+                rooms: '5 комнат',
+                floor: '2 этажа',
+                address: 'Московская область, КП "Рублёвка"',
+                description: 'Современный коттедж с ландшафтным дизайном, гаражом на 2 машины и баней.'
+              },
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/878aa794-15f4-4027-844b-bb15e7767af9.jpg',
+                title: '2-комнатная квартира у метро',
+                price: '10 200 000 ₽',
+                area: '62 м²',
+                rooms: '2 комнаты',
+                floor: '7/12 этаж',
+                address: 'Москва, ул. Арбат, 25',
+                description: 'Квартира в тихом центре, рядом с метро. Свежий ремонт, все коммуникации новые.'
+              },
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/f4eca84f-b07f-4c94-adfc-e6c96fcc0dab.jpg',
+                title: 'Студия в новостройке',
+                price: '6 800 000 ₽',
+                area: '38 м²',
+                rooms: 'Студия',
+                floor: '5/15 этаж',
+                address: 'Москва, ул. Садовая, 45',
+                description: 'Компактная студия с продуманной планировкой. Идеально для молодой пары или инвестиций.'
+              },
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/878aa794-15f4-4027-844b-bb15e7767af9.jpg',
+                title: '4-комнатная квартира премиум-класса',
+                price: '35 000 000 ₽',
+                area: '145 м²',
+                rooms: '4 комнаты',
+                floor: '20/30 этаж',
+                address: 'Москва, Кутузовский проспект, 2',
+                description: 'Эксклюзивная квартира с дизайнерским ремонтом, консьерж-сервисом и подземным паркингом.'
+              },
+              {
+                image: 'https://cdn.poehali.dev/projects/91cb0f1f-dd5f-4a2e-90f6-d2424eb1f02f/files/f4eca84f-b07f-4c94-adfc-e6c96fcc0dab.jpg',
+                title: 'Таунхаус в экологичном районе',
+                price: '18 500 000 ₽',
+                area: '180 м²',
+                rooms: '4 комнаты',
+                floor: '3 этажа',
+                address: 'Московская область, КП "Зелёная долина"',
+                description: 'Уютный таунхаус с террасой и собственным участком. Рядом лес и озеро.'
+              }
+            ].map((property, index) => (
+              <Card key={index} className="hover-scale hover:shadow-2xl transition-all duration-300 animate-fade-in overflow-hidden">
+                <div className="relative h-64">
+                  <img 
+                    src={property.image} 
+                    alt={property.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
+                    {property.price}
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl mb-2">{property.title}</CardTitle>
+                  <div className="flex flex-wrap gap-3 text-sm text-muted-foreground mb-3">
+                    <div className="flex items-center gap-1">
+                      <Icon name="Square" size={16} />
+                      <span>{property.area}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Icon name="Home" size={16} />
+                      <span>{property.rooms}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Icon name="Building" size={16} />
+                      <span>{property.floor}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm text-muted-foreground mb-3">
+                    <Icon name="MapPin" size={16} className="mt-0.5 flex-shrink-0" />
+                    <span>{property.address}</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base mb-4">{property.description}</CardDescription>
+                  <Button className="w-full hover-scale" onClick={() => setShowContactForm(true)}>
+                    Узнать подробнее
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Наши услуги</h2>
           <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
@@ -143,7 +257,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+      <section id="about" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
@@ -181,7 +295,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4 bg-white">
+      <section id="contact" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Свяжитесь с нами</h2>
           <p className="text-center text-muted-foreground text-lg mb-12">
